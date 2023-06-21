@@ -19,6 +19,7 @@ public class Database {
 
     public boolean readTryAcquire() {
         // TODO: Add your code here...
+
     }
 
     public void readAcquire() {
