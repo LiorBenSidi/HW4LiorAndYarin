@@ -1,14 +1,20 @@
 public class PathFromRoot {
     public static boolean doesPathExist(BinNode<Character> root, String str) {
         // TODO: Add your code for part A1 here...
-        if(str.length() == 0){
+        boolean flag = false;
+        if (str.length() == 0) {
             return true;
         }
-        if (str.charAt(1) == root.getLeft().getData()) {
-            doesPathExist(root.getLeft() ,str.substring(1));
-        } else if (str.charAt(1) == root.getRight().getData()) {
-            doesPathExist(root.getRight() ,str.substring(1));
+        if(str.length() == 1){
+            return str.charAt(0) == root.getData();
         }
-        return doesPathExist(root , str);
+        if(root.getData() == str.charAt(0)) {
+            if (str.charAt(1) == root.getLeft().getData()) {
+                flag = doesPathExist(root.getLeft(), str.substring(1));
+            } else if (str.charAt(1) == root.getRight().getData()) {
+               flag = doesPathExist(root.getRight(), str.substring(1));
+            }
+        }
+        return flag;
     }
 }

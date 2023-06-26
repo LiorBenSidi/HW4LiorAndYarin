@@ -1,0 +1,14 @@
+Testing part A...
+Testing part A1...
+Path "hey"? true
+Path "Hey"? false
+Path "h"? true
+Path "k"? false
+Path "aaa"? false
+Path "hE"? false
+Path "hA"? false
+Path "ha"? true
+Path "@123"? false
+Path "he"? true
+Path "hex"? false
+
