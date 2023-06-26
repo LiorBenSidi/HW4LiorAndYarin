@@ -7,7 +7,7 @@ public class Main {
     private static void testPartA() {
         System.out.println("Testing part A...");
         testPartA1();
-        //testPartA2();
+        testPartA2();
     }
 
     private static void testPartA1() {
@@ -28,7 +28,7 @@ public class Main {
         System.out.println();
     }
 
-    /*
+
     private static void testPartA2() {
         System.out.println("Testing part A2...");
         BinNode<Integer> root = new BinNode<>(5);
@@ -41,9 +41,7 @@ public class Main {
         root.getLeft().getRight().setRight(new BinNode<>(1));
         testPartA2(root);
     }
-     */
 
-    /*
     private static void testPartA2(BinNode<Integer> root) {
         int level = LevelLargestSum.getLevelWithLargestSum(root);
         System.out.println("Level with largest sum: " + level);
@@ -53,6 +51,7 @@ public class Main {
         }
     }
 
+    /*
     private static void testPartB() {
         System.out.println("Testing part B...");
         int numOfReaders = 10;  // Note: You cannot assume this is the only value!

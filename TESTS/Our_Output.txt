@@ -12,3 +12,21 @@ Path "@123"? false
 Path "he"? true
 Path "hex"? false
 
+Testing part A2...
+Level with largest sum: 3
+Level with largest sum: 2
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 2
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
+Level with largest sum: 1
