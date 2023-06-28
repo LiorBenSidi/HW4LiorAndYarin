@@ -26,14 +26,16 @@ public class LevelLargestSum {
                 // Remove a node from the queue
                 BinNode<Integer> node = queue.poll();
                 // Add the node's data to the level sum
-                levelSum += node.getData();
+                if (node != null) {
+                    levelSum += node.getData();
+                }
 
                 // Add the left child to the queue if it is not null
-                if (node.getLeft() != null) {
+                if (node != null && node.getLeft() != null) {
                     queue.offer(node.getLeft());
                 }
                 // Add the right child to the queue if it is not null
-                if (node.getRight() != null) {
+                if (node != null && node.getRight() != null) {
                     queue.offer(node.getRight());
                 }
             }
