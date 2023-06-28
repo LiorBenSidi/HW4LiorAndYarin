@@ -7,15 +7,13 @@ import java.util.Map;
  */
 public class Database {
     private Map<String, String> data;
-    private int k;
-    private boolean isPut;
-    private int activeGet;
+    private final int k;
+    private boolean isPut = false;
+    private int activeGet = 0;
 
     public Database(int maxNumOfReaders) {
         data = new HashMap<>();
         this.k = maxNumOfReaders;
-        this.isPut = false;
-        this.activeGet = 0;
     }
 
     /**
@@ -47,10 +45,11 @@ public class Database {
     public boolean readTryAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
-            if (!isPut && activeGet < k) {
+            if (activeGet < k && !isPut) {
                 activeGet++;
                 return true;
             }
+
             return false;
         }
     }
@@ -70,6 +69,7 @@ public class Database {
                     throw new RuntimeException(e);
                 }
             }
+
             activeGet++;
         }
     }
@@ -82,9 +82,10 @@ public class Database {
     public void readRelease() {
         // TODO: Add your code here...
         synchronized (this) {
-            if (activeGet <= 0) {
+            if (!(activeGet > 0)) {
                 throw new IllegalMonitorStateException("Illegal read release attempt");
             }
+
             activeGet--;
             if (activeGet == 0) {
                 notifyAll();
@@ -107,6 +108,7 @@ public class Database {
                     throw new RuntimeException(e);
                 }
             }
+
             isPut = true;
         }
     }
@@ -120,10 +122,11 @@ public class Database {
     public boolean writeTryAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
-            if (!isPut && activeGet == 0) {
+            if (activeGet == 0 && !isPut) {
                 isPut = true;
                 return true;
             }
+
             return false;
         }
     }
@@ -139,6 +142,7 @@ public class Database {
             if (!isPut) {
                 throw new IllegalMonitorStateException("Illegal write release attempt");
             }
+
             isPut = false;
             notifyAll();
         }
