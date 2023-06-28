@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-/*
+
 public class Database {
     private Map<String, String> data;
 
@@ -19,7 +19,7 @@ public class Database {
 
     public boolean readTryAcquire() {
         // TODO: Add your code here...
-
+        return false;
     }
 
     public void readAcquire() {
@@ -36,10 +36,10 @@ public class Database {
 
     public boolean writeTryAcquire() {
         // TODO: Add your code here...
+        return false;
     }
 
     public void writeRelease() {
         // TODO: Add your code here...
     }
 }
- */

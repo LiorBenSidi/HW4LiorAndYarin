@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         testPartA();
-        //testPartB();
+        testPartB();
     }
 
     private static void testPartA() {
@@ -28,7 +28,6 @@ public class Main {
         System.out.println();
     }
 
-
     private static void testPartA2() {
         System.out.println("Testing part A2...");
         BinNode<Integer> root = new BinNode<>(5);
@@ -51,7 +50,6 @@ public class Main {
         }
     }
 
-    /*
     private static void testPartB() {
         System.out.println("Testing part B...");
         int numOfReaders = 10;  // Note: You cannot assume this is the only value!
@@ -149,7 +147,6 @@ public class Main {
         }
     }
 }
-
 
 abstract class Worker extends Thread {
     protected Database db;
@@ -264,6 +261,4 @@ class Writer extends Worker {
             db.writeRelease();
         }
     }
-
-     */
 }
