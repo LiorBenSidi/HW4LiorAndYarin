@@ -52,7 +52,6 @@ public class LevelLargestSum {
         // Return the level with the largest sum
         return maxLevel;
 
-
         /*
         int sum;
         int level;
