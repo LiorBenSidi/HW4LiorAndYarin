@@ -1,3 +1,8 @@
+/**
+ * A class that represents a node in a binary tree
+ *
+ * @param <E> the generic type of the data that stored in the node
+ */
 public class BinNode<E> {
     private E data;
     private BinNode<E> left;

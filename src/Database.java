@@ -55,9 +55,10 @@ public class Database {
     }
 
     /**
-     * Acquires a read lock, blocking until it can be obtained.
+     * Acquires a lock to read
+     * Until the lock is realised, the reading is blocked
      *
-     * @throws RuntimeException if the current thread is interrupted while waiting.
+     * @throws RuntimeException if the current thread that reading is being interrupted
      */
     public void readAcquire() {
         // TODO: Add your code here...
@@ -75,9 +76,10 @@ public class Database {
     }
 
     /**
-     * Releases a read lock and notifies waiting threads.
+     * Releases the lock for reading
+     * notifies threads that are waiting
      *
-     * @throws IllegalMonitorStateException if there are no active readers.
+     * @throws IllegalMonitorStateException if there is no thread that is reading at the moment
      */
     public void readRelease() {
         // TODO: Add your code here...
@@ -94,9 +96,10 @@ public class Database {
     }
 
     /**
-     * Acquires a write lock, blocking until it can be obtained.
+     * Acquires a lock to write
+     * Until the lock is realised, the writing is blocked
      *
-     * @throws RuntimeException if the current thread is interrupted while waiting.
+     * @throws RuntimeException if the current thread that reading is being interrupted
      */
     public void writeAcquire() {
         // TODO: Add your code here...
@@ -114,10 +117,10 @@ public class Database {
     }
 
     /**
-     * Attempts to acquire a write lock without blocking.
-     * If successful, sets the isWriting flag to true and returns true; otherwise, returns false.
+     * tries to acquire a write lock without blocking
+     * If the attempt was successful, so Raises the count of active writers by one
      *
-     * @return true if the write lock is acquired, false otherwise.
+     * @return true if the write lock is acquired, else - false
      */
     public boolean writeTryAcquire() {
         // TODO: Add your code here...
@@ -132,9 +135,10 @@ public class Database {
     }
 
     /**
-     * Releases a write lock, notifies waiting threads, and sets the isWriting flag to false.
+     * Releases the lock for writing
+     * notifies threads that are waiting
      *
-     * @throws IllegalMonitorStateException if the current thread is not the one currently writing.
+     * @throws IllegalMonitorStateException if there is no thread that is reading at the moment
      */
     public void writeRelease() {
         // TODO: Add your code here...
