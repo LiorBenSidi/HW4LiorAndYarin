@@ -45,9 +45,13 @@ public class Database {
     public boolean readTryAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
-            if (activeGet < k && !isPut) {
-                activeGet++;
-                return true;
+            if (activeGet < k) {
+                if(!isPut){
+                    activeGet++;
+                    return true;
+                }
+            } else {
+                return false;
             }
 
             return false;
@@ -63,7 +67,9 @@ public class Database {
     public void readAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
+            boolean flag = isPut || activeGet >= k;
             while (isPut || activeGet >= k) {
+                flag = isPut || activeGet >= k;
                 try {
                     wait();
                 } catch (InterruptedException e) {
@@ -86,11 +92,11 @@ public class Database {
         synchronized (this) {
             if (!(activeGet > 0)) {
                 throw new IllegalMonitorStateException("Illegal read release attempt");
-            }
-
-            activeGet--;
-            if (activeGet == 0) {
-                notifyAll();
+            } else {
+                activeGet--;
+                if (activeGet == 0) {
+                    notifyAll();
+                }
             }
         }
     }
@@ -104,7 +110,9 @@ public class Database {
     public void writeAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
+            boolean flag = isPut || activeGet > 0;
             while (isPut || activeGet > 0) {
+                flag = isPut || activeGet > 0;
                 try {
                     wait();
                 } catch (InterruptedException e) {
@@ -125,9 +133,13 @@ public class Database {
     public boolean writeTryAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
-            if (activeGet == 0 && !isPut) {
-                isPut = true;
-                return true;
+            if (activeGet == 0) {
+                if(!isPut) {
+                    isPut = true;
+                    return true;
+                }
+            } else {
+                return false;
             }
 
             return false;
@@ -145,10 +157,10 @@ public class Database {
         synchronized (this) {
             if (!isPut) {
                 throw new IllegalMonitorStateException("Illegal write release attempt");
+            } else {
+                isPut = false;
+                notifyAll();
             }
-
-            isPut = false;
-            notifyAll();
         }
     }
 }

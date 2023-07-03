@@ -17,37 +17,40 @@ public class LevelLargestSum {
             return -1;
         }
 
-        int maxLevel = 0; // Initialize a variable that represents the level with the largest sum
-        int maxSum = root.getData(); // The sum of the root's level that can be changed later
-        int currentLevel = 0; // A counter of the current level of the tree
-
-        Queue<BinNode<Integer>> queue = new ArrayDeque<>(); // Initialize an new ArrayDeque
+        Queue<BinNode<Integer>> queue;
+        queue = new ArrayDeque<>();
         queue.offer(root);
+        int levelSum;
+        int maxSum = root.getData();
+        int maxLevel = 0;
+        int currentLevel = 0;
 
-        // The level order traversal
         while (!queue.isEmpty()) {
-            int levelSum = 0;
+            levelSum = 0;
             int levelSize = queue.size();
 
             for (int i = 0; i < levelSize; i++) {
-                BinNode<Integer> node = queue.poll(); // Removes a node from the queue
+                BinNode<Integer> node = queue.poll();
                 if (node != null) {
-                    levelSum += node.getData(); // Adds the data from the current node to the level sum
+                    levelSum = levelSum + node.getData();
                 }
 
-                if (node != null && node.getLeft() != null) {
-                    queue.offer(node.getLeft()); // If the left child is not null, so Adds it to the queue
+                BinNode<Integer> nodeLeft = node != null ? node.getLeft() : null;
+                if (nodeLeft != null) {
+                    queue.offer(nodeLeft);
                 }
-                if (node != null && node.getRight() != null) {
-                    queue.offer(node.getRight()); // If the right child is not null, so Adds it to the queue
+
+                BinNode<Integer> nodeRight = node != null ? node.getRight() : null;
+                if (nodeRight != null) {
+                    queue.offer(nodeRight);
                 }
             }
 
             // If the current level sum is larger than previous,
             // so update the maximum sum and it's level
             if (levelSum > maxSum) {
-                maxSum = levelSum;
                 maxLevel = currentLevel;
+                maxSum = levelSum;
             }
 
             currentLevel++;
