@@ -67,9 +67,9 @@ public class Database {
     public void readAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
-            boolean flag = isPut || activeGet >= k;
+            //boolean flag = isPut || activeGet >= k;
             while (isPut || activeGet >= k) {
-                flag = isPut || activeGet >= k;
+                //flag = isPut || activeGet >= k;
                 try {
                     wait();
                 } catch (InterruptedException e) {
@@ -110,9 +110,9 @@ public class Database {
     public void writeAcquire() {
         // TODO: Add your code here...
         synchronized (this) {
-            boolean flag = isPut || activeGet > 0;
+            //boolean flag = isPut || activeGet > 0;
             while (isPut || activeGet > 0) {
-                flag = isPut || activeGet > 0;
+                //flag = isPut || activeGet > 0;
                 try {
                     wait();
                 } catch (InterruptedException e) {
